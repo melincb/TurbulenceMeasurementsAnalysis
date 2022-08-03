@@ -1,0 +1,49 @@
+============================================================
+Deployment   : LukaKP
+Current time : 4/30/2009 11:59:48 AM
+Start at     : 4/30/2009 11:59:24 AM
+Comment:
+Prve meritve tokov v KP zalivu na 3. rdeèi boji 2. plov. kanala pred 3. pomolom 19. dec. 2008
+------------------------------------------------------------
+Profile interval      (s) : 1800
+Number of cells           : 27
+Cell size             (m) : 0.50
+Average interval      (s) : 600
+Blanking distance     (m) : 0.50
+Measurement load      (%) : 25
+Power level               : HIGH
+Number of wave samples    : 1024
+Wave interval         (s) : 1800
+Wave sampling rate   (Hz) : 2
+Wave cell size        (m) : N/A
+Wave AST window start (m) : N/A
+Wave AST window size  (m) : N/A
+Wave AST find first peak  : N/A
+Wave AST qual. threshold  : N/A
+Wave AST SUV mode         : DISABLED
+Compass upd. rate     (s) : 1800
+Coordinate System         : ENU
+Speed of sound      (m/s) : MEASURED
+Salinity            (ppt) : 37
+Analog input 1            : NONE
+Analog input 2            : NONE
+Analog input power out    : DISABLED
+File wrapping             : OFF
+Serial output/TellTale    : OFF
+------------------------------------------------------------
+Assumed duration   (days) : 130.0
+Battery utilization   (%) : 224.0
+Battery level         (V) : 13.7
+Recorder size        (MB) : 154
+Recorder free space  (MB) : 154.000
+Memory required      (MB) : 150.9
+Vertical vel. prec (cm/s) : 0.6
+Horizon. vel. prec (cm/s) : 1.7
+------------------------------------------------------------
+Instrument ID             : WPR 0484  
+Head ID                   : WAV 5486
+Firmware version          : 1.17 AST
+------------------------------------------------------------
+AWAC AST Version 1.32
+Copyright (C) Nortek AS
+============================================================

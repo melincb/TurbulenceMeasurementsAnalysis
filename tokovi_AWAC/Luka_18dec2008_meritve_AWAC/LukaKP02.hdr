@@ -1,0 +1,281 @@
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.wpr]
+---------------------------------------------------------------------
+Number of measurements                12500
+Number of checksum errors             0
+Time of first measurement             12/19/2008 11:30:00 AM
+Time of last measurement              4/28/2009 4:10:01 PM
+
+User setup
+---------------------------------------------------------------------
+Profile interval                      1800 sec
+Number of cells                       27
+Cell size                             50 cm
+Average interval                      600 sec
+Measurement load                      25 %
+Transmit pulse length                 0.55 m
+Blanking distance                     0.50 m
+Compass update rate                   1800 sec
+Wave measurements                     ENABLED
+Wave - Powerlevel                     HIGH
+Wave - Interval                       1800 sec
+Wave - Number of samples              1024
+Wave - Sampling rate                  2 Hz
+Wave - SUV data collection            DISABLED
+Analog input 1                        NONE
+Analog input 2                        NONE
+Power output                          DISABLED
+Powerlevel                            HIGH
+Coordinate system                     ENU
+Sound speed                           MEASURED
+Salinity                              37.0 ppt
+Distance between pings                46.85 m
+Number of beams                       3
+Number of pings per burst             2
+Software version                      1.32
+Deployment name                       LukaKP
+Wrap mode                             OFF
+Deployment time                       12/19/2008 11:30:00 AM
+Comments                              Prve meritve tokov v KP zalivu na 3. rdeèi boji 2. plov. kanala pred 3. pomolom 19. dec. 2008
+System1                               46
+System2                               49
+System3                               12
+System4                               2047
+System5                               512
+System9                               0
+System10                              0
+System11                              0
+System12                              0
+System13                              0
+System14                              1800
+System16                              27
+System17                              2945
+System22                              1800
+System28                              1
+System29                              0
+System30                              2
+System31                              15649 15676 15703 15729
+System32                              7
+System33                              29490
+System34                              150
+System35                              590
+System36                              9638
+System38                              100
+System39                              12
+System40                              317
+System41                              1
+System42                              0
+System43                              0
+System44                              0
+System45                              6
+Start command                         Recorder deployment
+CRC download                          ON
+
+Hardware configuration
+---------------------------------------------------------------------
+Serial number                         WPR 0484  
+Internal code version                 13
+Revision number                       0
+Recorder size                         154 MByte
+Firmware version                      1.17 AST
+Velocity range                        NORMAL
+
+Head configuration
+---------------------------------------------------------------------
+Pressure sensor                       YES
+Compass                               YES
+Tilt sensor                           YES
+System 1                              1
+System 1                              0
+Head frequency                        1000 kHz
+Serial number                         WAV 5486
+Transformation matrix                 6461 -3232 -3232
+                                      0 -5596 5596
+                                      1506 1506 1506
+Pressure sensor calibration           0 0 8653 16171
+Number of beams                       3
+System5                               25 25 25 0
+System7                               -21527 -252 12175 128
+                                      -22443 473 12381 38
+System8                               1 0 0
+                                      0 1 0
+                                      0 0 1
+System9                               1 0 0
+                                      0 -1 0
+                                      0 0 -1
+System10                              0 1 1 0
+System11                              0 1 -1 0
+System13                              11847 18809 19217 26842
+System14                              -19831 2333 11795 -448
+                                      -19228 -688 11702 108
+System15                              32767 0 538 0
+                                      32505 244 0 0
+                                      32767 -575 -26 0
+                                      0 0 0 0
+System16                              0 0 0 0
+System17                              5461
+System18                              3600
+System19                              3600
+System20                              10000
+
+Data file format
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.v1]
+ 1   Velocity Cell 1 (Beam1|X|East)   (m/s)
+ 2   Velocity Cell 2 (Beam1|X|East)   (m/s)
+     .
+     .
+ n   Velocity Cell n (Beam1|X|East)   (m/s)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.v2]
+ 1   Velocity Cell 1 (Beam2|Y|North)  (m/s)
+ 2   Velocity Cell 2 (Beam2|Y|North)  (m/s)
+     .
+     .
+ n   Velocity Cell n (Beam2|Y|North)  (m/s)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.v3]
+ 1   Velocity Cell 1 (Beam3|Z|Up)     (m/s)
+ 2   Velocity Cell 2 (Beam3|Z|Up)     (m/s)
+     .
+     .
+ n   Velocity Cell n (Beam3|Z|Up)     (m/s)
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.hr2]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59.999)
+ 7   Velocity (Beam1|X|East)          (m/s)
+ 8   Velocity (Beam2|Y|North)         (m/s)
+ 9   Velocity (Beam3|Z|Up)            (m/s)
+10   Amplitude (Beam1)                (counts)
+11   Amplitude (Beam2)                (counts)
+12   Amplitude (Beam3)                (counts)
+13   Correlation (Beam1)              (%)
+14   Correlation (Beam2)              (%)
+15   Correlation (Beam3)              (%)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.a1]
+ 1   Amplitude Cell 1 (Beam1)         (counts)
+ 2   Amplitude Cell 2 (Beam1)         (counts)
+     .
+     .
+ n   Amplitude Cell n (Beam1)         (counts)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.a2]
+ 1   Amplitude Cell 1 (Beam2)         (counts)
+ 2   Amplitude Cell 2 (Beam2)         (counts)
+     .
+     .
+ n   Amplitude Cell n (Beam2)         (counts)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.a3]
+ 1   Amplitude Cell 1 (Beam3)         (counts)
+ 2   Amplitude Cell 2 (Beam3)         (counts)
+     .
+     .
+ n   Amplitude Cell n (Beam3)         (counts)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.sen]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Error code
+ 8   Status code
+ 9   Battery voltage                  (V)
+10   Soundspeed                       (m/s)
+11   Heading                          (degrees)
+12   Pitch                            (degrees)
+13   Roll                             (degrees)
+14   Pressure                         (dbar)
+15   Temperature                      (degrees C)
+16   Analog input 1
+17   Analog input 2
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.whd]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Burst counter
+ 8   No of wave data records
+ 9   Cell position                    (m)
+10   Battery voltage                  (V)
+11   Soundspeed                       (m/s)
+12   Heading                          (degrees)
+13   Pitch                            (degrees)
+14   Roll                             (degrees)
+15   Minimum pressure                 (dbar)
+16   Maximum pressure                 (dbar)
+17   Temperature                      (degrees C)
+18   CellSize                         (m)
+19   Noise amplitude beam 1           (counts)
+20   Noise amplitude beam 2           (counts)
+21   Noise amplitude beam 3           (counts)
+22   Noise amplitude beam 4           (counts)
+23   AST window start                 (m)
+24   AST window size                  (m)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.wad]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Pressure                         (dbar)
+ 8   AST Distance1 (Beam4)            (m)
+ 9   AST Distance2 (Beam4)            (m)
+10   AST Quality (Beam4)              (counts)
+11   Analog input
+12   Velocity (Beam1|X|East)          (m/s)
+13   Velocity (Beam2|Y|North)         (m/s)
+14   Velocity (Beam3|Z|Up)            (m/s)
+15   Amplitude (Beam1)                (counts)
+16   Amplitude (Beam2)                (counts)
+17   Amplitude (Beam3)                (counts)
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.wap]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Significant height (Hs)          (m)
+ 8   Mean 1/3 height (H3)             (m)
+ 9   Mean 1/10 height (H10)           (m)
+10   Maximum height (Hmax)            (m)
+11   Mean period (Tm02)               (s)
+12   Peak period (Tp)                 (s)
+13   Mean zerocrossing period (Tmean) (s)
+14   Peak direction (DirTp)           (deg)
+15   Directional spread (Spr1)        (deg)
+16   Mean direction (Mdir)            (deg)
+17   Unidirectivity index
+18   Mean Pressure                    (dbar) 
+19   Water velocity (Surface)         (m/s)
+20   Water direction (Surface)        (degrees)
+21   Error Code
+
+---------------------------------------------------------------------
+[C:\Documents and Settings\malacic\My Documents\Luka_KP\AWAC_meritve\Luka_18dec2008_nastavitve_AWAC\LukaKP02.wds]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   No. of Frequencies (rows)
+ 8   No. of Directions (columns)
+ Burst 1  [rows]x[columns]            (m^2/Hz/deg)
+ Burst 2  [rows]x[columns]            (m^2/Hz/deg)
+     .
+     .
+ Burst n  [rows]x[columns]            (m^2/Hz/deg)
