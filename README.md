@@ -11,33 +11,33 @@ The data from MSS90 probe is stored in **all_2008_08_21**, **all_2008_11_18**, a
 ## How to get *epsilon* from shear data with other methods than MSSpro:
 1. Make sure your data is storred in similar files as those from **all_2008_08_21/shear**
 2. Run **priprava_podatkov_za_izracun_epsilon_shear.py** (see its documentation on the top of the code, set the manual settings in the beggining of the code and perhaps some other settings in the code). This program computes PSD of shear fluctuations and merges it two ways: 
-a) computes geometrical mean of all PSD from bins with the same bin centers (i.e. central pressures of the bin) and the same combination *station-route* (the output is storred in a pickle file such as *shear12_outputs_povprecenje_VSEH_po_ruti_in_postajiall_2008_11_18.p*)
-b) computes geometrical mean of all PSD from bins with bin centers within the depth range of 1 dbar (e.g. all PSDs with bin centers in [1.50 dbar, 2.50 dbar) -> PSD with bin center 2 dbar,  all PSDs with bin centers in [2.50 dbar, 3.50 dbar) -> PSD with bin center 3 dbar, etc.) and the same combination *station-route* (the output is storred in a pickle file such as *shear12_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1mall_2008_11_18.p*).
+	- computes geometrical mean of all PSD from bins with the same bin centers (i.e. central pressures of the bin) and the same combination *station-route* (the output is storred in a pickle file such as *shear12_outputs_povprecenje_VSEH_po_ruti_in_postajiall_2008_11_18.p*)
+	- computes geometrical mean of all PSD from bins with bin centers within the depth range of 1 dbar (e.g. all PSDs with bin centers in [1.50 dbar, 2.50 dbar) -> PSD with bin center 2 dbar,  all PSDs with bin centers in [2.50 dbar, 3.50 dbar) -> PSD with bin center 3 dbar, etc.) and the same combination *station-route* (the output is storred in a pickle file such as *shear12_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1mall_2008_11_18.p*).
 3. Run **priprava_izracunov_epsilon_shear_za_risanje.py** (see its documentation on the top of the code, set the manual settings in the beggining of the code and perhaps some other settings in the code). This program fits each PSD from files of type *shear12_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1mall_yyyy_mm_dd.p* or *shear12_outputs_povprecenje_VSEH_po_ruti_in_postajiall_yyyy_mm_dd.p* to the Nasmyth curve using *Maximum Likelihood Estimate* or *Integral Method* (see **fitting_procedures_for_Nasmyth_curve.py**). The output is a pickle file, such as *slovar_epsilon_za_risat_NA_1m_all_2008_08_21.p*, which contains:
-a) *epsilon* at each combination *station-route-depth*:
-	i) using Maximum Likelihood Estimate on the data from shear sensor 1,
-	ii) using Maximum Likelihood Estimate on the data from shear sensor 2,
-	iii) arithmetical average of i) and ii)
-	iv) using Integral Method on the data from shear sensor 1,
-	v) using Integral Method on the data from shear sensor 2,
-	vi) arithmetical average of iv) and v)
-b) buoyancy Reynolds number, calculated from a)iii)
-c) some other *shear-epsilon* related stuff.
+	- *epsilon* at each combination *station-route-depth*:
+		1) using Maximum Likelihood Estimate on the data from shear sensor 1,
+		2) using Maximum Likelihood Estimate on the data from shear sensor 2,
+		3) arithmetical average of a. and b.
+		4) using Integral Method on the data from shear sensor 1,
+		5) using Integral Method on the data from shear sensor 2,
+		6) arithmetical average of d. and e.
+	- buoyancy Reynolds number, calculated from c. in the previous item
+	- some other *shear-epsilon* related stuff.
 4. Plot the shear data using *slovar_epsilon_za_risat_NA_1m_all_yyyy_mm_dd.p*. Here you have two options:
-	4.1. Run **Risanje_epsilon_shear_na_vseh_tockah_ob_isti_ruti.py** (see its documentation) (recommended). This program plots a 2-dimensional *epsilon* crossection of the basin at a fixed route.
-	4.2. Run **Risanje_epsilon_shear_na_isti_tocki_ob_razlicnih_rutah.py** (WARNING: the interpolation makes spurious unrealistic plots). This program plots a Hovmoller diagram of *epsilon* at a fixed station at all routes.
+	1. Run **Risanje_epsilon_shear_na_vseh_tockah_ob_isti_ruti.py** (see its documentation) (recommended). This program plots a 2-dimensional *epsilon* crossection of the basin at a fixed route.
+	2. Run **Risanje_epsilon_shear_na_isti_tocki_ob_razlicnih_rutah.py** (WARNING: the interpolation makes spurious unrealistic plots). This program plots a Hovmoller diagram of *epsilon* at a fixed station at all routes.
 
 ## How to get *epsilon* from temperature data:
 1) Make sure your data is storred in similar files as those from **all_2008_08_21/cutted**
 2) Run **priprava_podatkov_za_izracun_epsilon_T.py** (see its documentation on the top of the code, set the manual settings in the beggining of the code and perhaps some other settings in the code). This program computes PSD of temperature fluctuation gradient and merges it two ways: 
-a) computes geometrical mean of all PSD from bins with the same bin centers (i.e. central pressures of the bin) and the same combination *station-route* (the output is storred in a pickle file such as *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postajiall_2008_11_18.p*)
-b) computes geometrical mean of all PSD from bins with bin centers within the depth range of 1 dbar (e.g. all PSDs with bin centers in [1.5 dbar, 2.5dbar) -> PSD with bin center 2 dbar,  all PSDs with bin centers in [2.5 dbar, 3.5dbar) -> PSD with bin center 3 dbar, etc.) and the same combination *station-route* (the output is storred in a pickle file such as *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1mall_2008_11_18.p*).
+	- computes geometrical mean of all PSD from bins with the same bin centers (i.e. central pressures of the bin) and the same combination *station-route* (the output is storred in a pickle file such as *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postajiall_2008_11_18.p*)
+	- computes geometrical mean of all PSD from bins with bin centers within the depth range of 1 dbar (e.g. all PSDs with bin centers in [1.5 dbar, 2.5dbar) -> PSD with bin center 2 dbar,  all PSDs with bin centers in [2.5 dbar, 3.5dbar) -> PSD with bin center 3 dbar, etc.) and the same combination *station-route* (the output is storred in a pickle file such as *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1mall_2008_11_18.p*).
 3) Run **dejanski_izracun_epsilon_T.py** (define the input pickle file). This program fits each PSD from files of type *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1mall_yyyy_mm_dd.p* or *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postajiall_yyyy_mm_dd.p* using the *iterative process with Maximum Likelihood Estimate and the integration* (see **fitting_procedures_for_Batchelor_curve.py**). The output is a pickle file, such as *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m_DODAN_EPSILON_GRAD_Tall_yyyy_mm_dd.p*, which contains:
-a) *shear-epsilon* from *eallX.msb*
-b) *epsilon* and thermall dissipation from iterative proces with 6 degrees of freedom
-c) *epsilon* and thermall dissipation from iterative proces with 12 degrees of freedom
-d) the minimum wavenumber of the range of wavenumbers that was used to fit (it is independent from degrees of freedom, maximum wavenumber is always 100 cpm)
-e) some other *temperature-gradient-epsilon* related stuff.
+	- *shear-epsilon* from *eallX.msb*
+	- *epsilon* and thermall dissipation from iterative proces with 6 degrees of freedom
+	- *epsilon* and thermall dissipation from iterative proces with 12 degrees of freedom
+	- the minimum wavenumber of the range of wavenumbers that was used to fit (it is independent from degrees of freedom, maximum wavenumber is always 100 cpm)
+	- some other *temperature-gradient-epsilon* related stuff.
  
 
 
