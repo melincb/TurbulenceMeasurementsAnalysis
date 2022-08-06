@@ -1,4 +1,4 @@
-'''By this script we calculate epsilon from temperature profiles. To save the results uncomment the last line'''
+'''By this script we calculate epsilon from temperature profiles.'''
 import numpy as np
 import pickle
 from fitting_procedures_for_Batchelor_curve import iterative_fit_of_epsilon_using_MLE_and_thermdiss_using_integral, fit_Batchelorjeve_krivulje_na_razliko_logaritmov
@@ -8,8 +8,12 @@ datumska_mapa = 'all_2008_11_18'    # 'all_2008_08_21' or 'all_2008_11_18' or 'a
 outputs = pickle.load(open('grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m' + datumska_mapa + '.p', 'rb'))
 # also works with outputs = pickle.load(open('grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji' + datumska_mapa + '.p', 'rb'))
 
+save_pickle = False
 
-# Let's apply the MLE fit on outputs!
+
+# THE BASIC MANUAL SETTINGS END HERE
+
+# Let's apply the iterative (MLE) fit on outputs!
 
 new_outputs_na_1m = {'epsilon_shear':[], 'useful_grad_T_PSD':[], 'peps':[], 'tempcor':[], 'wavenumbers':[], 'thermdiss_MSSpro':[], 'st_zdruzenih':[], 'postaja_ruta_globina':[], 'N2':[], 'epsilon_grad_T_DoF6':[], 'epsilon_grad_T_DoF12':[], 'thermdiss_DoF12':[], 'thermdiss_DoF6':[], 'min_fitted_wn':[]}
 
@@ -50,4 +54,5 @@ for ioutput in range(len(outputs['tempcor'])):
         new_outputs_na_1m['thermdiss_DoF12'].append(thermdiss_DoF12)
         new_outputs_na_1m['min_fitted_wn'].append(min_wn)
 
-#pickle.dump(new_outputs_na_1m, open('grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m_DODAN_EPSILON_GRAD_T' + datumska_mapa + '.p', 'wb'))
+if save_pickle:
+    pickle.dump(new_outputs_na_1m, open('grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m_DODAN_EPSILON_GRAD_T' + datumska_mapa + '.p', 'wb'))

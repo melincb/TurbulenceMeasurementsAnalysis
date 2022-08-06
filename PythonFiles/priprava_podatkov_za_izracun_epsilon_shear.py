@@ -1,5 +1,5 @@
 '''This file contains three things:
- 1) The function to calculate PSD from shear fluctuation profiles (and some other accompanying quantities. This is done by
+ 1) The function to calculate PSD from shear fluctuation profiles (and some other accompanying quantities). This is done by
     function PSD_shear.
  2) A procedure to merge the results from all casts from PSD_shear function to sets that are separated with default
     pressure step and to sets with pressure step of 1dbar. WARNING: The data that this procedure needs is not uploaded
@@ -19,6 +19,8 @@ import glob, os
 
 mapa_za_shranjevanje_grafov =  'Saved_figures\ '[:-1]    # Where it saves the figures
 mapa_s_skriptami = os.getcwd()  # directory with scripts
+
+
 
 def PSD_shear(izvirna_mapa, datumska_mapa, postaja, ruta, tipska_mapa='shear', tlacni_korak=0.25):
     '''

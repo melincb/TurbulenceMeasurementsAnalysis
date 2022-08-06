@@ -4,6 +4,8 @@ the temperature fluctuation gradient spectrum with its best fitting Batchelor sp
 iterative_fit_of_epsilon_using_MLE_and_thermdiss_using_integral from fitting_procedures_for_Batchelor_curve.py
 (already computed in dejansti_izracun_epsilon_T.py).
 If the given combination of station-route-depth is not valid in data, it will be skipped.
+
+To only plot either shear or temperature spectra, you need to change the function plot_stuff().
 '''
 
 
@@ -23,6 +25,9 @@ combinations_to_plot = ['LK01_RUTA_10_14.0', 'LK01_RUTA_10_16.0', 'LK01_RUTA_03_
 savefigs = False    # Set to True to save the plot
 
 
+# THE BASIC MANUAL SETTINGS END HERE
+
+
 # Load temperature data
 outputs = pickle.load(open(f'grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m_DODAN_EPSILON_GRAD_T{datumska_mapa}.p', 'rb'))
 # Load shear data
@@ -30,7 +35,7 @@ outputs_shear = pickle.load(open(f'shear12_outputs_povprecenje_VSEH_po_ruti_in_p
 
 def Nasmyth_navadni(k, log10epsilon, temp_mean):
     nu = 1.702747 - 0.05126103 * temp_mean + 0.0005918645 * temp_mean ** 2  # MSSpro user manual
-    nu *= 10 ** -6  # m**2*s**-1, MSSpro user manual
+    nu *= 10 ** -6  # m**2*s**-1, MSSpro user manual, nu is viscosity
 
     epsilon = 10 ** log10epsilon
     x = k * (nu ** 3 / epsilon) ** 0.25

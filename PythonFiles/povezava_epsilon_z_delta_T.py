@@ -1,6 +1,7 @@
 '''Looks at the correlation between the Temperature_water (mean of the entire water column) - Temperature_air and
 epsilon values, which are measured at least 3 dbar below the sea level and at least 2 dbar above the sea floor (these
-numbers can be changed in the code).'''
+numbers can be changed in the code).
+'''
 import openpyxl
 from pathlib import Path
 import datetime
@@ -110,7 +111,7 @@ def premica(x, a, b):
     return a*x + b
 
 
-for idatumska_mapa in range(len(datumske_mape)):
+for idatumska_mapa in range(len(datumske_mape)):    # Loop through all dates
     datumska_mapa = datumske_mape[idatumska_mapa]
     used_dt = used_datetimes[idatumska_mapa]
     used_avg_T = avg_Ts[idatumska_mapa]
@@ -125,11 +126,11 @@ for idatumska_mapa in range(len(datumske_mape)):
     datoteke = glob.glob('*.tob')
     ip = 0
     plt.figure(figsize=(10, 8))
-    for postaja in ['LK01','LK02','LK03','LK04','LK05','LK06','LK07']:
+    for postaja in ['LK01','LK02','LK03','LK04','LK05','LK06','LK07']:  # Loop through all stations
         delta_T_epsilon_tega_dne = [[], []] # delta_T and epsilon for this night
         for postajaruta in izracuni_epsilon_in_Re_b.keys():
             if postajaruta[:4] == postaja:
-                temperature_stolpca = []
+                temperature_stolpca = []    # temperatures in this water column
                 for iprg in range(len(izracuni_epsilon_in_Re_b_T['tempcor'])):
                     if izracuni_epsilon_in_Re_b_T['postaja_ruta_globina'][iprg][:len(postajaruta)] == postajaruta:
                         # if you want to limit your temperature measurements, use if float(izracuni_epsilon_in_Re_b_T['postaja_ruta_globina'][iprg][13:]) is something (float(izracuni_epsilon_in_Re_b_T['postaja_ruta_globina'][iprg][13:]) is the depth of the measurement)

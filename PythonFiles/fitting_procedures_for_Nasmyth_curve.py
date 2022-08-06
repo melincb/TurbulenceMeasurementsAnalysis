@@ -1,4 +1,4 @@
-def fit_Nasmyth_least_squares_log10(psd, wavenumbers, critical_wavenumber, temp_mean):
+def fit_Nasmyth_least_squares_log10(psd, wavenumbers, min_wavenumber, max_wavenumber, temp_mean):
     '''Least squares fit to the Nasmyth spectrum. The analytical Nasmyth spectrum is from Lueck: Calculating the Rate
     of Dissipation of Turbulent Kinetic Energy, RSI, 2013,
     https://rocklandscientific.com/wp-content/uploads/2021/12/TN-028-Calculating-the-Rate-of-Dissipation-of-Turbulent-Kinetic-Energy.pdf
@@ -7,7 +7,8 @@ def fit_Nasmyth_least_squares_log10(psd, wavenumbers, critical_wavenumber, temp_
     Inputs: (s12o is f"shear12_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m{datumska_mapa}.p")
         psd ... shear fluctuation PSD (unit s**(-2)/cpm, in s12o this is "useful_PSD1" or "useful_PSD2"),
         wavenumbers ... wavenumbers that correspond to PSD (unit cpm, in s12o this is "wavenumbers"),
-        critical_wavenumber ... the highest wavenumber to include in the fit,
+        min_wavenumber ... the lowest wavenumber to include in the fit,
+        max_wavenumber ... the highest wavenumber to include in the fit,
         temp_mean ... the mean temperature (unit degreeC, in s12o this is "tempcor")
 
     Outputs:
@@ -21,7 +22,7 @@ def fit_Nasmyth_least_squares_log10(psd, wavenumbers, critical_wavenumber, temp_
     nu = 1.702747 - 0.05126103*temp_mean + 0.0005918645*temp_mean**2    # MSSpro user manual
     nu *= 10**-6    # m**2*s**-1, MSSpro user manual, nu is viscosity
 
-    proper_wavenumbers = [wn for wn in wavenumbers if wn > 0 and wn <= critical_wavenumber]
+    proper_wavenumbers = [wn for wn in wavenumbers if wn >= min_wavenumber and wn <= max_wavenumber]
     proper_psd = np.array([psd[iwn] for iwn in range(len(wavenumbers)) if wavenumbers[iwn] in proper_wavenumbers])
     log10_proper_psd = np.log10(proper_psd) # decimal logarithm of proper PSD
 

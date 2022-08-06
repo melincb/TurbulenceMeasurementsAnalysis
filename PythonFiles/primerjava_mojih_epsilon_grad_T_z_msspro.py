@@ -19,12 +19,12 @@ Slovenian_labels = False    # True for Slovenian labels, False for English label
 
 
 
+# THE BASIC MANUAL SETTINGS END HERE
 
 
 
 
-
-datum = f'{datumska_mapa[-2:]}.{datumska_mapa[-5:-3]}.{datumska_mapa[-10:-6]}'
+datum = f'{datumska_mapa[-2:]}.{datumska_mapa[-5:-3]}.{datumska_mapa[-10:-6]}'  # a humane way to print the date
 
 # Load temperature data
 outputs = pickle.load(open(f'grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m_DODAN_EPSILON_GRAD_T{datumska_mapa}.p', 'rb'))

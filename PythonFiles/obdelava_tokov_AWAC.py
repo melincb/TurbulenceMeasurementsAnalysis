@@ -18,6 +18,8 @@ datetime_min_max = (datetime.datetime(year=2009, month=4, day=18, hour=23, minut
 LK_min_max = (datetime.datetime(year=2009, month=4, day=20, hour=7, minute=30), datetime.datetime(year=2009, month=4, day=21, hour=8, minute=14))
 
 
+# THE BASIC MANUAL SETTINGS END HERE
+
 
 
 used_datetime = []

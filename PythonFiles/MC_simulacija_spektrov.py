@@ -1,5 +1,5 @@
 '''Computes Monte Carlo simulations for our fitting techniques within our range of fit (Batchelor: 1-100cpm, Nasmyth
-6-35cm, wavenumber step 1cpm (both ranges and wavenumber steps can be manually changed in the code)).
+6-35cm, wavenumber step 1cpm (both ranges and wavenumber steps can be manually changed in the beginning of the code)).
 The random noise in spectrum is distributed via chi_squared distribution with 6 and 12 degrees of freedom (also can be
 manually changed).
 
@@ -23,16 +23,23 @@ plot_example = False    # To see the plot example, set this to True, else False
 save_figures = False    # To save the plots, set this to True, else False
 
 compute_Batchelor_simulations = False   # If True, the entire process of MC simulations for the Batchelor spectrum is
-                                        # going to run (WARNING: it may last more than 16 hours!),
+                                        # going to run (WARNING: it may last for more than 16 hours!),
                                         # if False, only the plot of presaved simulations will appear
 save_Batchelor_results_in_pickle = False   # To save the results of Batchelor simulations in .p, set to True
 
 compute_Nasmyth_simulations = False     # If True, the entire process of MC simulations for the Nasmyth spectrum is
-                                        # going to run (WARNING: it may last a few hours!),
+                                        # going to run (WARNING: it may last for a few hours!),
                                         # if False, only the plot of presaved simulations will appear
 save_Nasmyth_results_in_pickle = False  # To save the results of Nasmyth simulations in .p, set to True
 
 English_labels = True   # Set to False for Slovenian labels
+
+min_wn_in_sh_spectrum = 6   # minimum wavenumber in the shear fluctuation spectrum
+max_wn_in_sh_spectrum = 35  # maximum wavenumber in the shear fluctuation spectrum
+sh_wn_step = 1              # wavenumber step in the shear fluctuation spectrum
+critical_wn_in_tg_spectrum = 100    # critical wavenumber in the temperature fluctuation gradient spectrum
+tg_wn_step = 1              # wavenumber step in the temperature fluctuation gradient spectrum (the minimum wavenumber
+                            # in this spectrum is equal to tg_wn_step)
 
 
 # THE BASIC MANUAL SETTINGS END HERE
@@ -78,8 +85,8 @@ def Nasmyth_navadni(k, log10epsilon, temp_mean=False):
 
 if plot_example:
     plt.figure(figsize=(12, 4))
-    epsiloni_slika = [-9, -8, -7, -6, -5]
-    kji = np.linspace(1,100,100)
+    epsiloni_slika = [-9, -8, -7, -6, -5]   # log10(epsilon) in the plot
+    kji = np.linspace(tg_wn_step, critical_wn_in_tg_spectrum, int(critical_wn_in_tg_spectrum/tg_wn_step))
     for iepsilon in range(len(epsiloni_slika)):
         plt.subplot(1, 5, iepsilon+1)
         dof = 6
@@ -110,7 +117,7 @@ if plot_example:
 
     plt.figure(figsize=(12, 4))
     epsiloni_slika = [-9, -8, -7, -6, -5]
-    kji_shear = np.linspace(6, 35, 30)
+    kji_shear = np.linspace(min_wn_in_sh_spectrum, max_wn_in_sh_spectrum, int((max_wn_in_sh_spectrum - min_wn_in_sh_spectrum)/sh_wn_step + 1))
     for iepsilon in range(len(epsiloni_slika)):
         plt.subplot(1, 5, iepsilon+1)
         dof = 6
@@ -144,7 +151,7 @@ if plot_example:
 # BATCHELOR SPECTRUM
 
 N_samples = 1000    # Number of samples of each log10_epsilon
-kji = np.linspace(1, 100)   # wavenumbers
+kji = np.linspace(tg_wn_step, critical_wn_in_tg_spectrum, int(critical_wn_in_tg_spectrum / tg_wn_step))   # wavenumbers
 log10_epsilon_bounds = [-9.5, -2]   # min and max log10_epsilon for the generation of spectra
 log10_epsilon_step = 0.1    # the step between adjacent log10_epsilon for the generation of spectra
 # Initiate log10_epsilons for the generation of spectra
@@ -192,7 +199,7 @@ if compute_Batchelor_simulations:
 
             # Batchelor_Fit_least_squares_log10, 12 degrees of freedom
             try:
-                log10_12_fit = Batchelor_Fit_least_squares_log10(zasumljen_spekter_12_temp, kji, temp_mean=temperatura, critical_wavenumber=100)[0]
+                log10_12_fit = Batchelor_Fit_least_squares_log10(zasumljen_spekter_12_temp, kji, temp_mean=temperatura, critical_wavenumber=critical_wn_in_tg_spectrum)[0]
                 log10_12_true_intervals_errors[ilog10_epsilon].append(log10_12_fit - trenutni_log10_epsilon)
                 for jlog10_epsilon in range(len(log10_epsilons)):
                     if log10_12_fit >= log10_epsilons[jlog10_epsilon] - log10_epsilon_step/2 and log10_12_fit < log10_epsilons[jlog10_epsilon] + log10_epsilon_step/2:
@@ -204,7 +211,7 @@ if compute_Batchelor_simulations:
 
             # Batchelor_Fit_least_squares_log10, 6 degrees of freedom
             try:
-                log10_6_fit = Batchelor_Fit_least_squares_log10(zasumljen_spekter_6_temp, kji, temp_mean=temperatura, critical_wavenumber=100)[0]
+                log10_6_fit = Batchelor_Fit_least_squares_log10(zasumljen_spekter_6_temp, kji, temp_mean=temperatura, critical_wavenumber=critical_wn_in_tg_spectrum)[0]
                 log10_6_true_intervals_errors[ilog10_epsilon].append(log10_6_fit - trenutni_log10_epsilon)
                 for jlog10_epsilon in range(len(log10_epsilons)):
                     if log10_6_fit >= log10_epsilons[jlog10_epsilon] - log10_epsilon_step/2 and log10_6_fit < log10_epsilons[jlog10_epsilon] + log10_epsilon_step/2:
@@ -223,9 +230,9 @@ if compute_Batchelor_simulations:
                         log10_minus_mean_12_results_intervals_errors[jlog10_epsilon].append(log10_minus_mean_12_fit - trenutni_log10_epsilon)
 
                 if jspekter < 100:  # Because iterative fit is very slow, we only do 100 samples
-                    MLE_fit_12 = np.log10(iterative_fit_of_epsilon_using_MLE_and_thermdiss_using_integral(kji, zasumljen_spekter_12_temp, temp_mean=temperatura, starting_epsilon=10**log10_minus_mean_12_fit, DoF=12)[0])
+                    MLE_fit_12 = np.log10(iterative_fit_of_epsilon_using_MLE_and_thermdiss_using_integral(kji, zasumljen_spekter_12_temp, temp_mean=temperatura, starting_epsilon=10**log10_minus_mean_12_fit, DoF=12, critical_wavenumber=critical_wn_in_tg_spectrum)[0])
                     MLE_12_true_intervals_errors[ilog10_epsilon].append(MLE_fit_12 - trenutni_log10_epsilon)
-                    MLE_perfect_start_fit_12 = np.log10(iterative_fit_of_epsilon_using_MLE_and_thermdiss_using_integral(kji, zasumljen_spekter_12_temp, temp_mean=temperatura, starting_epsilon=10**trenutni_log10_epsilon, DoF=12)[0])
+                    MLE_perfect_start_fit_12 = np.log10(iterative_fit_of_epsilon_using_MLE_and_thermdiss_using_integral(kji, zasumljen_spekter_12_temp, temp_mean=temperatura, starting_epsilon=10**trenutni_log10_epsilon, DoF=12, critical_wavenumber=critical_wn_in_tg_spectrum)[0])
                     MLE_perfect_start_12_true_intervals_errors[ilog10_epsilon].append(MLE_perfect_start_fit_12 - trenutni_log10_epsilon)
 
                     for jlog10_epsilon in range(len(log10_epsilons)):
@@ -383,7 +390,7 @@ plt.close()
 # NASMYTH SPECTRUM
 
 N_samples = 1000    # number of samples
-kji = np.linspace(6, 35, 30)    # wavenumbers (in cpm)
+kji = np.linspace(min_wn_in_sh_spectrum, max_wn_in_sh_spectrum, int((max_wn_in_sh_spectrum - min_wn_in_sh_spectrum)/sh_wn_step + 1))    # wavenumbers (in cpm)
 log10_epsilon_bounds = [-9.5, -2]   # min and max log10_epsilon for the generation of spectra
 log10_epsilon_step = 0.1    # the step between adjacent log10_epsilon for the generation of spectra
 # Initiate log10_epsilons for the generation of spectra
@@ -423,12 +430,12 @@ if compute_Nasmyth_simulations:
             # spectrum with random noise with 12 degrees of freedom
             zasumljen_spekter_12 = neokrnjen_spekter * np.random.chisquare(12, size=len(kji)) / 12
 
-            fit_Nlog10_6 = fit_Nasmyth_least_squares_log10(zasumljen_spekter_6, kji, critical_wavenumber=35, temp_mean=temperatura)[0]
-            fit_Nlog10_12 = fit_Nasmyth_least_squares_log10(zasumljen_spekter_12, kji, critical_wavenumber=35, temp_mean=temperatura)[0]
-            fit_NL_6 = fit_Nasmyth_Lueck(psd=zasumljen_spekter_6, wavenumbers=kji, min_wavenumber=6, max_wavenumber=35, temp_mean=temperatura)
-            fit_NL_12 = fit_Nasmyth_Lueck(psd=zasumljen_spekter_12, wavenumbers=kji, min_wavenumber=6, max_wavenumber=35, temp_mean=temperatura)
-            fit_NMLE_6 = fit_Nasmyth_MLE(psd=zasumljen_spekter_6, wavenumbers=kji, min_wavenumber=6, max_wavenumber=35, temp_mean=temperatura, DoF=6)
-            fit_NMLE_12 = fit_Nasmyth_MLE(psd=zasumljen_spekter_12, wavenumbers=kji, min_wavenumber=6, max_wavenumber=35, temp_mean=temperatura, DoF=12)
+            fit_Nlog10_6 = fit_Nasmyth_least_squares_log10(zasumljen_spekter_6, kji, min_wavenumber=min_wn_in_sh_spectrum, max_wavenumber=max_wn_in_sh_spectrum, temp_mean=temperatura)[0]
+            fit_Nlog10_12 = fit_Nasmyth_least_squares_log10(zasumljen_spekter_12, kji, min_wavenumber=min_wn_in_sh_spectrum, max_wavenumber=max_wn_in_sh_spectrum, temp_mean=temperatura)[0]
+            fit_NL_6 = fit_Nasmyth_Lueck(psd=zasumljen_spekter_6, wavenumbers=kji, min_wavenumber=min_wn_in_sh_spectrum, max_wavenumber=max_wn_in_sh_spectrum, temp_mean=temperatura)
+            fit_NL_12 = fit_Nasmyth_Lueck(psd=zasumljen_spekter_12, wavenumbers=kji, min_wavenumber=min_wn_in_sh_spectrum, max_wavenumber=max_wn_in_sh_spectrum, temp_mean=temperatura)
+            fit_NMLE_6 = fit_Nasmyth_MLE(psd=zasumljen_spekter_6, wavenumbers=kji, min_wavenumber=min_wn_in_sh_spectrum, max_wavenumber=max_wn_in_sh_spectrum, temp_mean=temperatura, DoF=6)
+            fit_NMLE_12 = fit_Nasmyth_MLE(psd=zasumljen_spekter_12, wavenumbers=kji, min_wavenumber=min_wn_in_sh_spectrum, max_wavenumber=max_wn_in_sh_spectrum, temp_mean=temperatura, DoF=12)
 
 
             Nlog10_dof12_true_intervals_errors[ilog10_epsilon].append(fit_Nlog10_12 - trenutni_log10_epsilon)

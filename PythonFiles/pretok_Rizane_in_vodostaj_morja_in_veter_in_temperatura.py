@@ -1,7 +1,7 @@
 '''Plots the conditions. All figures are shown simultaneously.
 Part 1: Rizana river flow.
 Part 2: see level in Koper.
-Part3: wind.
+Part 3: wind.
 Part 4: air temperature at 2m height.
 To save figures in Saved_figures directory, set savefigs=True'''
 
