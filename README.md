@@ -40,10 +40,13 @@ The data from MSS90 probe is stored in **all_2008_08_21**, **all_2008_11_18**, a
 	- some other *temperature-gradient-epsilon* related stuff.
  
 
-
-## How to simultaneously plot shear fluctuation spectra from both sensors and temperature fluctuation gradient spectrum with the best fitting theoretical curves:
+## Comparison of *epsilon* outputs from different techniques
+### How to simultaneously plot shear fluctuation spectra from both sensors and temperature fluctuation gradient spectrum with the best fitting theoretical curves:
 To do so, you need both *grad_T_outputs_povprecenje_VSEH_po_ruti_in_postaji_NA_1m_DODAN_EPSILON_GRAD_Tall_yyyy_mm_dd.p* and *slovar_epsilon_za_risat_NA_1m_all_yyyy_mm_dd.p*.
 Simply run **risanje_spektrov.py** (see its documentation).
+### How to make histograms to compare multiple *epsilon* outputs:
+- To compare *epsilon* from shear using many different techniques (*Maximum Likelihood Estimate*, *Integral Method* and *MSSpro*'s *eallX.msb* on each sensor and their final output using both sensors) run **primerjava_mojih_epsilon_shear_z_msspro.py*.
+- To compare *epsilon* from temperature (*iterative procedure using MLE*) with *epsilon* from shear (various techniques) run **primerjava_mojih_epsilon_grad_T_z_msspro.py**.
 
 
 ## Monte Carlo simulations
